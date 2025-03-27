@@ -36,5 +36,60 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
+    int tabuleiro [10][10];
+char titulo [10] = {'A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J' };
+int k, l, m, n;
+
+
+
+// Preenchendo a Matriz com Zeros
+
+for (int i = 0; i < 10; i++){
+
+    for (int j = 0; j < 10; j++){
+
+        tabuleiro [i][j] = 0;
+    }
+}
+
+//Colocando o 1º barco na Horizontal
+printf("Escolha a linha do 1º navio (De 0 a 7): ");
+scanf("%d", &k);
+printf("Escolha a coluna do 1º navio (De 0 a 7): ");
+scanf("%d", &l);
+
+for(int j = l; j < 3 + l; j++){
+    
+    tabuleiro[k][j] = 3;
+}
+
+//Colocando o 2º barco na Vertical
+printf("Escolha a linha do 2º navio (De 0 a 7): ");
+scanf("%d", &m);
+printf("Escolha a coluna do 2º navio (De 0 a 7): ");
+scanf("%d", &n);
+
+for(int i = m; i < 3 + m; i++){
+    
+    tabuleiro[i][n] = 4;
+}
+
+//Imprimindo os títulos das linhas
+printf("  ");
+for (int i = 0; i < 10; i++){
+    printf("  %c", titulo[i]);
+}
+
+//Imprimindo os zeros e o número das linhas
+printf("\n");
+
+for (int i = 0; i < 10; i++){
+    printf("%d ", i+1);
+    for (int j = 0; j < 10; j++){
+        printf("  %d", tabuleiro[i][j]);
+    }
+    printf("\n");
+}
+
     return 0;
 }
