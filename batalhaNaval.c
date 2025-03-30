@@ -38,7 +38,7 @@ int main() {
 
     int tabuleiro [10][10];
 char titulo [10] = {'A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J' };
-int k, l, m, n;
+int k, l, m, n,ddc1, ddc2, ddb1, ddb2;
 
 
 
@@ -52,44 +52,76 @@ for (int i = 0; i < 10; i++){
     }
 }
 
-//Colocando o 1º barco na Horizontal
-printf("Escolha a linha do 1º navio (De 0 a 7): ");
+//Colocando o 1º barco na Horizontal Para a Diretita
+
+printf("Escolha a linha do 1º navio: ");
 scanf("%d", &k);
-printf("Escolha a coluna do 1º navio (De 0 a 7): ");
+printf("Escolha a coluna do 1º navio: ");
 scanf("%d", &l);
 
-for(int j = l; j < 3 + l; j++){
+for(int i = 0; i < 3; i++){
     
-    tabuleiro[k][j] = 3;
+    tabuleiro[k][l+i] = 3;
 }
 
-//Colocando o 2º barco na Vertical
-printf("Escolha a linha do 2º navio (De 0 a 7): ");
+//Colocando o 2º barco na Vertical Para Baixo
+
+printf("Escolha a linha do 2º navio: ");
 scanf("%d", &m);
-printf("Escolha a coluna do 2º navio (De 0 a 7): ");
+printf("Escolha a coluna do 2º navio: ");
 scanf("%d", &n);
 
-for(int i = m; i < 3 + m; i++){
+for(int i = 0; i < 3; i++){
     
-    tabuleiro[i][n] = 4;
+    tabuleiro[m+i][n] = 4;
 }
 
-//Imprimindo os títulos das linhas
+//Colocando o 3º barco na Diagonal Para Baixo Direita
+
+printf("Escolha a linha do 3º navio: ");
+scanf("%d", &ddb1);
+printf("Escolha a coluna do 3º navio: ");
+scanf("%d", &ddb2);
+
+tabuleiro [ddb1][ddb2] = 7;
+
+for(int i = 0; i < 3; i++){
+        
+    tabuleiro[ddb1+i][ddb2+i] = 7;
+}
+
+//Colocando o 4º barco na Diagonal Para Cima Direita
+
+printf("Escolha a linha do 4º navio: ");
+scanf("%d", &ddc1);
+printf("Escolha a coluna do 4º navio: ");
+scanf("%d", &ddc2);
+
+tabuleiro [ddc1][ddc2] = 6;
+
+for(int i = 0; i < 3; i++){
+        
+    tabuleiro[ddc1-i][ddc2+i] = 6;
+}
+
+//Imprimindo os títulos das Colunas
 printf("  ");
 for (int i = 0; i < 10; i++){
     printf("  %c", titulo[i]);
 }
 
-//Imprimindo os zeros e o número das linhas
+//Imprimindo o Tabuleiro Completo
+
 printf("\n");
 
 for (int i = 0; i < 10; i++){
-    printf("%d ", i+1);
+    printf("0%d ", i+1);
     for (int j = 0; j < 10; j++){
         printf("  %d", tabuleiro[i][j]);
     }
     printf("\n");
 }
 
-    return 0;
+return 0;
+
 }
