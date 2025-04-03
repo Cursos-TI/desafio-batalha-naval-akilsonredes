@@ -38,7 +38,8 @@ int main() {
 
     int tabuleiro [10][10];
 char titulo [10] = {'A', 'B', 'C', 'D', 'E','F', 'G', 'H', 'I', 'J' };
-int k, l, m, n,ddc1, ddc2, ddb1, ddb2;
+int k, l, m, n, o, p;
+char variavel;
 
 
 
@@ -52,57 +53,76 @@ for (int i = 0; i < 10; i++){
     }
 }
 
-//Colocando o 1º barco na Horizontal Para a Diretita
 
-printf("Escolha a linha do 1º navio: ");
-scanf("%d", &k);
-printf("Escolha a coluna do 1º navio: ");
-scanf("%d", &l);
+printf("Digite (1) para Cone \n");
+printf("Digite (2) para Cruz \n");
+printf("Digite (3) para Losango \n");
+printf("Digite a Opção:");
+scanf("%c", &variavel);
 
-for(int i = 0; i < 3; i++){
+ switch (variavel)
+ {
+    case '1':
     
-    tabuleiro[k][l+i] = 3;
+    //Colocando o barco na Forma de Cone
+
+    printf("Escolha a linha do 1º navio (Cone): ");
+    scanf("%d", &k);
+    printf("Escolha a coluna do 1º navio (Cone): ");
+    scanf("%d", &l);
+
+    for(int i = 0; i < 1; i++){
+      tabuleiro[k][l] = 3;
+        for (int j = 0; j < 3; j++){
+    tabuleiro[k+1][l-1+j] = 3;
+            for (int w = 0; w < 5; w++){
+            tabuleiro[k+2][l-2+w] = 3;
+    }
 }
-
-//Colocando o 2º barco na Vertical Para Baixo
-
-printf("Escolha a linha do 2º navio: ");
-scanf("%d", &m);
-printf("Escolha a coluna do 2º navio: ");
-scanf("%d", &n);
-
-for(int i = 0; i < 3; i++){
-    
-    tabuleiro[m+i][n] = 4;
 }
+    break;
+ 
+    case '2':
 
-//Colocando o 3º barco na Diagonal Para Baixo Direita
+    //Colocando o barco na Forma de Cruz
 
-printf("Escolha a linha do 3º navio: ");
-scanf("%d", &ddb1);
-printf("Escolha a coluna do 3º navio: ");
-scanf("%d", &ddb2);
+    printf("Escolha a linha do 2º navio (Cruz): ");
+    scanf("%d", &m);
+    printf("Escolha a coluna do 2º navio (Cruz): ");
+    scanf("%d", &n);
 
-tabuleiro [ddb1][ddb2] = 7;
+    for(int i = 0; i < 3; i++){
+      tabuleiro[m+i][n] = 4;
+        if( i == 1){
+            for (int j = 0; j < 5; j++){
+                tabuleiro[m+i][n-2+j] = 4;
+        }
+    }
+   
+   }
+    break;
+ 
+ case '3':
+    //Colocando o barco na Forma de Losango
 
-for(int i = 0; i < 3; i++){
-        
-    tabuleiro[ddb1+i][ddb2+i] = 7;
-}
+    printf("Escolha a linha do  navio (Losango): ");
+    scanf("%d", &o);
+    printf("Escolha a coluna do navio (Losango): ");
+    scanf("%d", &p);
 
-//Colocando o 4º barco na Diagonal Para Cima Direita
+    for(int i = 0; i < 3; i++){
+        tabuleiro[o+i][p] = 4;
+        if( i == 1){
+            for (int j = 0; j < 3; j++){
+                tabuleiro[o+i][p-1+j] = 4;
+        }
+    }
+   
+   }
+ break;
 
-printf("Escolha a linha do 4º navio: ");
-scanf("%d", &ddc1);
-printf("Escolha a coluna do 4º navio: ");
-scanf("%d", &ddc2);
+ }
 
-tabuleiro [ddc1][ddc2] = 6;
-
-for(int i = 0; i < 3; i++){
-        
-    tabuleiro[ddc1-i][ddc2+i] = 6;
-}
 
 //Imprimindo os títulos das Colunas
 printf("  ");
@@ -121,6 +141,7 @@ for (int i = 0; i < 10; i++){
     }
     printf("\n");
 }
+
 
 return 0;
 
